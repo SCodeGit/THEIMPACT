@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgive & Israel | The Impact - SRC 2026/2027</title>
+    <!-- Favicon Links -->
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="assets/images/favicon-32x32.jpeg">
+    <link rel="icon" type="image/jpeg" sizes="16x16" href="assets/images/favicon-16x16.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.jpeg">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Dynamic Dark/Light Theme Engine */
+        :root[data-theme="dark"] {
+            --bg-deep: #0a0f1d;
+            --surface: #131b31;
+            --card-bg: #1a2542;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --accent: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 40px rgba(0,0,0,0.4);
+            --nav-bg: rgba(19, 27, 49, 0.95);
+        }
+
+        :root[data-theme="light"] {
+            --bg-deep: #f1f5f9;
+            --surface: #ffffff;
+            --card-bg: #f8fafc;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent: #d97706;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: rgba(0, 0, 0, 0.08);
+            --shadow: 0 10px 30px rgba(0,0,0,0.06);
+            --nav-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            padding-top: 105px; /* Adjusted to fit the two-tier navbar */
+        }
+
+        /* Two-Tier Responsive Navigation Bar */
+        .top-nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Tier 1: Brand & Theme Toggle */
+        .nav-tier-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .brand-logo span {
+            color: var(--accent);
+        }
+
+        .theme-toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--primary);
+        }
+
+        /* Tier 2: Two-Row Layered Page Buttons for Mobile & Desktop */
+        .nav-tier-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            padding: 8px 5%;
+            background: var(--surface);
+        }
+
+        .nav-link-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            white-space: nowrap;
+        }
+
+        .nav-link-btn:hover {
+            color: var(--text-main);
+            border-color: var(--primary);
+        }
+
+        .nav-link-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Desktop Optimization: Place all 4 buttons side-by-side or clean row */
+        @media (min-width: 640px) {
+            body {
+                padding-top: 85px;
+            }
+            .nav-tier-bottom {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+                padding: 10px 5%;
+            }
+            .nav-link-btn {
+                padding: 8px 20px;
+                font-size: 0.92rem;
+                border-radius: 20px;
+            }
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(180deg, var(--surface) 0%, var(--bg-deep) 100%);
+            padding: 50px 20px 30px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .college-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header h1 span {
+            color: var(--accent);
+        }
+
+        .theme-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* Page Content Display Controllers */
+        .page-pane {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .page-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ticket & Picture Boiler Card Styling */
+        .ticket-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .candidate-box {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .candidate-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Picture Boiler Frame Component */
+        .picture-boiler {
+            width: 100%;
+            height: 260px;
+            background-color: var(--border);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .picture-boiler img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .picture-boiler .fallback-initials {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--text-muted);
+            font-weight: 800;
+            opacity: 0.4;
+        }
+
+        .candidate-details {
+            padding: 24px;
+            text-align: left;
+        }
+
+        .candidate-role {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .candidate-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .candidate-meta {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Declaration Section */
+        .declaration-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .declaration-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .declaration-card p {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .declaration-card strong {
+            color: var(--text-main);
+        }
+
+        .quote-modern {
+            background: rgba(59, 130, 246, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Blueprint Categories & Grid */
+        .section-title {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            margin: 30px 0 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .agenda-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .agenda-num {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            border-radius: 8px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .agenda-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .agenda-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .agenda-text ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Download Section Card */
+        .download-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .download-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .download-card p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.05rem;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        footer span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .candidates-grid {
+                grid-template-columns: 1fr;
+            }
+            .ticket-card, .declaration-card, .download-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Two-Tier Responsive Navigation Bar -->
+    <nav class="top-nav-bar">
+        <!-- Tier 1: Brand & Theme Toggle -->
+        <div class="nav-tier-top">
+            <a class="brand-logo" onclick="switchPage('home')">#THE <span>IMPACT</span></a>
+            <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Theme">
+                <span id="themeIcon">☀️</span>
+            </button>
+        </div>
+
+        <!-- Tier 2: Two-Row Grid Layer for Mobile, Inline for Desktop -->
+        <div class="nav-tier-bottom">
+            <button class="nav-link-btn active" onclick="switchPage('home')">Home</button>
+            <button class="nav-link-btn" onclick="switchPage('declaration')">Declaration</button>
+            <button class="nav-link-btn" onclick="switchPage('manifesto')">Blueprint</button>
+            <button class="nav-link-btn" onclick="switchPage('download')">PDF Download</button>
+        </div>
+    </nav>
+
+    <header>
+        <div class="college-tag">Peki College of Education &bull; SRC 2026/2027 Academic Year</div>
+        <h1># THE <span>IMPACT</span></h1>
+        <div class="theme-badge">Transforming Ideas Into Action</div>
+    </header>
+
+    <div class="container">
+        
+        <!-- PAGE 1: HOME & TICKET -->
+        <div id="page-home" class="page-pane active">
+            <div class="ticket-card">
+                <div style="text-align: center;">
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 6px;">Official Presidential Ticket</h3>
+                    <p style="color: var(--text-muted);">Hopeful '26 &bull; #FORGIVE4PRESIDENT</p>
+                </div>
+                
+                <div class="candidates-grid">
+                    <!-- Presidential Candidate Picture Boiler -->
+                    <div class="candidate-box">
+                        <div class="picture-boiler">
+                            <img src="assets/images/forgive.jpg" alt="Forgive Emerald Afi Mornyuie" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-initials" style="display:none;">FM</div>
+                        </div>
+                        <div class="candidate-details">
+                            <div class="candidate-role">Presidential Aspirant</div>
+                            <div class="candidate-name">Forgive Emerald Afi Mornyuie</div>
+                            <div class="candidate-meta">Level 200 &bull; B.Ed. Junior High Education</div>
+                        </div>
+                    </div>
+
+                    <!-- Vice Presidential Candidate Picture Boiler -->
+                    <div class="candidate-box">
+                        <div class="picture-boiler">
+                            <img src="assets/images/israel.jpg" alt="Mr. Israel Kwadzo Agbeti" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-initials" style="display:none;">IA</div>
+                        </div>
+                        <div class="candidate-details">
+                            <div class="candidate-role">Vice Presidential Aspirant</div>
+                            <div class="candidate-name">Mr. Israel Kwadzo Agbeti</div>
+                            <div class="candidate-meta">Running Mate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: DECLARATION -->
+        <div id="page-declaration" class="page-pane">
+            <div class="declaration-card">
+                <h2>Declaration of Intent</h2>
+                <p>I, <strong>FORGIVE EMERALD AFI MORNYUIE</strong>, a Level 200 student teacher offering Bachelor of Education in Junior High Education, together with my running mate <strong>Mr. ISRAEL KWADZO AGBETI</strong>, do hereby declare our intention to contest for the offices of <strong>SRC President and Vice President</strong> respectively for the <strong>2026/2027 academic year</strong> at Peki College of Education.</p>
+                
+                <div class="quote-modern">
+                    "Leadership is service, and service is impact. We believe the SRC should not just represent students, it should transform their college experience."
+                </div>
+
+                <p>That is why under the theme <em>"THE IMPACT: Transforming Ideas Into Action"</em>, we present ourselves to lead, to listen, and to deliver.</p>
+                <p>As student teachers, we have been trained to understand people, communities, and systems. We have interacted with colleagues across levels and we understand our core challenges: accommodation, academics, welfare, sanitation, and student voice.</p>
+                <p>We are aspiring because we believe we can do more together. We bring the passion, humility, and commitment to turn student concerns into real, and measurable action.</p>
+            </div>
+        </div>
+
+        <!-- PAGE 3: STRATEGIC BLUEPRINT / MANIFESTO -->
+        <div id="page-manifesto" class="page-pane">
+            <div class="section-title">Complete Agenda Index</div>
+
+            <div class="agenda-grid">
+                <div class="agenda-item">
+                    <div class="agenda-num">01</div>
+                    <div class="agenda-text">
+                        <h4>Media House Upgrade</h4>
+                        <p>Improving the existing campus media house with advanced digital features and modern broadcasting gear.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">02</div>
+                    <div class="agenda-text">
+                        <h4>Summer Huts Renovation</h4>
+                        <p>Renovating all summer huts with complete modern wiring networks and durable lounge furniture.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">03</div>
+                    <div class="agenda-text">
+                        <h4>Ladies' Summer Hut Construction</h4>
+                        <p>Building a dedicated, modern summer hut strategically located between MT and Dubai exclusively for ladies.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">04</div>
+                    <div class="agenda-text">
+                        <h4>SRC Secretariat Project Continuation</h4>
+                        <p>Ensuring steady progression and successful completion of the ongoing SRC Secretariat building project.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">05</div>
+                    <div class="agenda-text">
+                        <h4>Special Student Support System</h4>
+                        <p>Allocating 10 out of 60 CA slots specially for vulnerable groups, featuring:</p>
+                        <ul>
+                            <li>Students suffering from chronic diseases.</li>
+                            <li>Physically challenged students.</li>
+                            <li>Pregnant women on campus.</li>
+                            <li>Students recovering from surgery (mandatory 6-month exemption from physical activities).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">06</div>
+                    <div class="agenda-text">
+                        <h4>10-Year SRC GOVCO Development Project</h4>
+                        <p>Long-term blueprint covering the secretariat, shop & unisex salon, multipurpose court, and outdoor furniture solutions.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">07</div>
+                    <div class="agenda-text">
+                        <h4>Internal Job Prioritization</h4>
+                        <p>Prioritizing experienced and skilled student workforce for internal school tasks before hiring external workers.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">08</div>
+                    <div class="agenda-text">
+                        <h4>Rechargeable Lighting & 24/7 Learning</h4>
+                        <p>Advocating for rechargeable lighting systems across all campus facilities to foster uninterrupted 24/7 learning.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">09</div>
+                    <div class="agenda-text">
+                        <h4>Block C Washroom Upgrade</h4>
+                        <p>Modernizing and improving the sanitary conditions of the Block C washroom facilities.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">10</div>
+                    <div class="agenda-text">
+                        <h4>Dormitory Water Tank Sanitization</h4>
+                        <p>Regular scheduled washing of poly tanks across dormitories to optimize water hygiene and safety.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">11</div>
+                    <div class="agenda-text">
+                        <h4>Proper Refuse Management</h4>
+                        <p>Implementing structured refuse separation initiatives coupled with consistent weekly disposal routines.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">12</div>
+                    <div class="agenda-text">
+                        <h4>Monthly Campus Clean-up</h4>
+                        <p>Organizing a comprehensive, mandatory general campus clean-up campaign once every month.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">13</div>
+                    <div class="agenda-text">
+                        <h4>Hostel Infrastructure Advocacy</h4>
+                        <p>Actively advocating for increased bed capacity and additional hall mistresses to ease accommodation strain.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">14</div>
+                    <div class="agenda-text">
+                        <h4>Enhanced Outdoor Lighting</h4>
+                        <p>Advocating for a comprehensive, brighter outdoor lighting grid to guarantee nighttime campus safety.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">15</div>
+                    <div class="agenda-text">
+                        <h4>Open Forums</h4>
+                        <p>Institutionalizing regular open interaction sessions to bridge the communication gap between leadership and students.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">16</div>
+                    <div class="agenda-text">
+                        <h4>Digital Suggestion Box & Portal</h4>
+                        <p>Deploying a secure anonymous website and digital feedback box for seamless grievance reporting.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-item">
+                    <div class="agenda-num">17</div>
+                    <div class="agenda-text">
+                        <h4>Campus Wi-Fi Extension</h4>
+                        <p>Expanding high-speed wireless internet coverage directly to key vantage points across campus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: PDF DOWNLOAD -->
+        <div id="page-download" class="page-pane">
+            <div class="download-card">
+                <h2>Official Manifesto Document</h2>
+                <p>Download the complete, printable PDF version of "The Impact" manifesto blueprint to share with colleagues and review every policy detail offline.</p>
+                <a href="assets/docs/The-Impact-Manifesto-2026.pdf" download class="btn-download">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Download PDF Document
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <span>The Impact Campaign</span> &bull; Forgive & Israel &bull; Peki College of Education</p>
+    </footer>
+
+    <!-- Script Engine for Two-Tier Navigation and Theme Controller -->
+    <script>
+        const htmlElement = document.documentElement;
+        const themeIcon = document.getElementById('themeIcon');
+
+        // Theme Initialization
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            htmlElement.setAttribute('data-theme', storedTheme);
+            updateToggleUI(storedTheme);
+        } else {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = prefersDark ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', defaultTheme);
+            updateToggleUI(defaultTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleUI(newTheme);
+        }
+
+        function updateToggleUI(theme) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Two-Tier Page Switcher Engine
+        function switchPage(pageId) {
+            const panes = document.querySelectorAll('.page-pane');
+            panes.forEach(pane => pane.classList.remove('active'));
+
+            const navButtons = document.querySelectorAll('.nav-link-btn');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById('page-' + pageId).classList.add('active');
+
+            // Find matching nav button to activate
+            navButtons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(pageId)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            window.scrollTo({ top: 130, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
